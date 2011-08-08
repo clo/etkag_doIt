@@ -83,14 +83,14 @@ foreach ($aBase as $base) {
           echo "info.txt existiert nicht\n";
           $fh = fopen("$ndir.\\info.txt", "a+");
           if (preg_match("/2/", $nr)) {
-            fwrite($fh, "#DOKUMENT###\r\n");
+            fwrite($fh, "#DOKUMENT:###\r\n");
           }
           if (preg_match("/1/", $nr)) {
-            fwrite($fh, "#BILD#\r\n");
+            fwrite($fh, "#BILD:#\r\n");
           }
           if (preg_match("/3/", $nr)) {
-            fwrite($fh, "#DOKUMENT###\r\n");
-            fwrite($fh, "#BILD#\r\n");
+            fwrite($fh, "#DOKUMENT:###\r\n");
+            fwrite($fh, "#BILD:#\r\n");
           }
           fclose($fh);
         }
