@@ -1,11 +1,14 @@
 <?PHP
-$g_pathToPictures="Z:\\LOC\\kjoff";
-$g_pathToConvertProg="Z:\\LOC\\Program Files\\xnview\\XnView\\nconvert.exe";
+$g_pathToPictures="T:\\1Geschaeftsdaten\\Internetseite_ETK";
+$g_pathToConvertProg="T:\\1Geschaeftsdaten\\Internetseite_ETK\\BilderVerkleinern\\lib\\xnview\\XnView\\nconvert.exe";
 $aBase = array (
-  $g_pathToPictures."\\etkag2\\doc\\hauptseite\\aktuell\\anlaesse",
-  $g_pathToPictures."\\etkag2\\doc\\hauptseite\\aktuell\\news",
-  $g_pathToPictures."\\etkag2\\doc\\hauptseite\\aktuell\\motto",
-  $g_pathToPictures."\\etkag2\\doc\\hauptseite\\aktuell\\news",
-  $g_pathToPictures."\\etkag2\\doc\\hauptseite\\qualitaetssicherung\schulung"
+  $g_pathToPictures."\\doc\\hauptseite\\aktuell\\anlaesse"
+  $g_pathToPictures."\\doc\\hauptseite\\aktuell\\news",
+  $g_pathToPictures."\\hauptseite\\aktuell\\motto",
+  $g_pathToPictures."\\doc\\hauptseite\\aktuell\\news",
+  $g_pathToPictures."\\doc\\hauptseite\\qualitaetssicherung\schulung"
 );
+
+/*
+*/
 ?>

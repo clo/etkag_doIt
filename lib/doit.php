@@ -1,13 +1,12 @@
 <?PHP
-error_reporting(E_ALL);
+error_reporting(E_ALL & ~E_NOTICE);
+error_reporting(0);
 
-include("cfg/config.inc.php");
+include("../cfg/config.inc.php");
 
-//$localInstaPath = "Z:\\LOC\\kjoff";
-$g_path=$argv[1];
 $localInstaPath = $g_pathToPictures;
 $convertprog = $g_pathToConvertProg;
-
+echo $convertprog."\n";
 /*
  * main prog
  */
@@ -21,17 +20,18 @@ foreach ($aBase as $base) {
   echo $base . "\n";
   $dh = opendir($base);
   while (($dir = readdir($dh)) !== false) {
-    if (!preg_match("/\.{1,2}/", $dir)) {
+	if (!preg_match("/\.{1,2}/", $dir)) {
+      echo $dir."\n";
       $ndir = $base . '\\' . $dir;
       $ndh = opendir($ndir);
       while (($file = readdir($ndh)) !== false) {
         if (preg_match("/.jpg$|.JPG$/", $file) && !preg_match("/^etkag_/", $file)) {
-          $size = filesize($ndir . '\\' . $file);
+          echo $file."\n";        
+		  $size = filesize($ndir . '\\' . $file);
           if ($size > 10000) {
             $nfile = $ndir . "\\" . $file;
             $ofile = $ndir . "\\etkag_" . $file;
             echo $nfile . " ...";
-            //$nfile = str_replace("\\","\\\\",$nfile);
             $cmd = "\"$convertprog\" " .
                     //"-text_pos 10 -10 -text_flag bottom-left -text_color 255 255 255 -text_font arial 50 -text \"ETK Elektrotableau Kalbermatter AG\" " .
                     "-o \"$ofile\" " .
@@ -41,7 +41,6 @@ foreach ($aBase as $base) {
                     "-resize 600 0 " .
                     "-D " .
                     "\"$nfile\"";
-            //echo $cmd."\n";
             $ret = shell_exec($cmd);
             print_r($ret);
             echo ".. done\n";
@@ -49,7 +48,7 @@ foreach ($aBase as $base) {
         }
       }
       closedir($ndh);
-
+    
       //create info file
       $ndh = opendir($ndir);
       $nr = 0;
@@ -83,14 +82,14 @@ foreach ($aBase as $base) {
           echo "info.txt existiert nicht\n";
           $fh = fopen("$ndir.\\info.txt", "a+");
           if (preg_match("/2/", $nr)) {
-            fwrite($fh, "#DOKUMENT:###\r\n");
+            fwrite($fh, "#DOKUMENT###\r\n");
           }
           if (preg_match("/1/", $nr)) {
-            fwrite($fh, "#BILD:#\r\n");
+            fwrite($fh, "#BILD#\r\n");
           }
           if (preg_match("/3/", $nr)) {
-            fwrite($fh, "#DOKUMENT:###\r\n");
-            fwrite($fh, "#BILD:#\r\n");
+            fwrite($fh, "#DOKUMENT###\r\n");
+            fwrite($fh, "#BILD#\r\n");
           }
           fclose($fh);
         }
