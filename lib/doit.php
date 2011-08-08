@@ -6,13 +6,6 @@ include("cfg/config.inc.php");
 //$localInstaPath = "Z:\\LOC\\kjoff";
 $g_path=$argv[1];
 $localInstaPath = $g_pathToPictures;
-$aBase = array (
-  $localInstaPath."\\etkag2\\doc\\hauptseite\\aktuell\\anlaesse",
-  $localInstaPath."\\etkag2\\doc\\hauptseite\\aktuell\\news",
-  $localInstaPath."\\etkag2\\doc\\hauptseite\\aktuell\\motto",
-  $localInstaPath."\\etkag2\\doc\\hauptseite\\aktuell\\news",
-  $localInstaPath."\\etkag2\\doc\\hauptseite\\qualitaetssicherung\schulung"
-);
 $convertprog = $g_pathToConvertProg;
 
 /*
